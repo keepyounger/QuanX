@@ -47,7 +47,7 @@ function objectBodyToString(object) {
 })().catch((e) => $.log(e + ""))
     .finally(() => $.done());
 
-async function login(email, password, then) {
+async function login(email, password) {
     await $.http.post({
         url: "https://koozk.com/auth/login",
         headers: {
