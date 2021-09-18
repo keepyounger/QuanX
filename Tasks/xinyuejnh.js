@@ -40,7 +40,7 @@ async function jianianhua(num) {
         var data = JSON.parse($.stringify(res.body));
         if (data.ret == 0) {
             $.msg("本次得分" + data.modRet.sPackageName);
-            score += parseInt(data.modRet.sPackageName);
+            score += (parseInt(data.modRet.sPackageName) || 0);
         }
         if (num > 1) {
             await $.wait(3500).then(async() => {
