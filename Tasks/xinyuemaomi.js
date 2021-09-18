@@ -16,6 +16,10 @@ cron "0 10,15,20 * * *" script-path=xinyuemaomi.js,tag=心悦猫咪
 
 ============小火箭=========
 心悦猫咪 = type=cron,script-path=xinyuemaomi.js, cronexpr="0 10,15,20 * * *", timeout=3600, enable=true
+
+============青龙===========
+cron: 0 10,15,20 * * *
+new Env('心悦猫咪');
  */
 
 const $ = API("心悦猫咪", true); // API("APP") --> 无log输出

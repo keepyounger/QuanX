@@ -16,6 +16,10 @@ VPN签到 = type=cron,cronexp="40 8 * * *",wake-system=1,timeout=3600,script-pat
 
 ============小火箭=========
 VPN签到 = type=cron,script-path=xinyueyueka.js, cronexpr="40 8 * * *", timeout=3600, enable=true
+
+============青龙===========
+cron: 40 8 * * *
+new Env('VPN签到');
  */
 
 const $ = API("VPN签到", true); // API("APP") --> 无log输出

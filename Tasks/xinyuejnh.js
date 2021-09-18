@@ -16,6 +16,10 @@ cron "10 9 16-22 * *" script-path=xinyueyueka.js,tag=心悦嘉年华
 
 ============小火箭=========
 心悦嘉年华 = type=cron,script-path=xinyueyueka.js, cronexpr="10 9 16-22 * *", timeout=3600, enable=true
+
+============青龙===========
+cron: 10 9 16-22 * *
+new Env('心悦嘉年华');
  */
 
 const $ = API("心悦嘉年华", true); // API("APP") --> 无log输出

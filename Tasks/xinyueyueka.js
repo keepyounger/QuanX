@@ -16,6 +16,10 @@ cron "0 9 * * *" script-path=xinyueyueka.js,tag=心悦俱乐部月卡领取
 
 ============小火箭=========
 心悦俱乐部月卡领取 = type=cron,script-path=xinyueyueka.js, cronexpr="0 9 * * *", timeout=3600, enable=true
+
+============青龙===========
+cron: 0 9 * * *
+new Env('心悦俱乐部月卡领取');
  */
 
 const $ = API("心悦俱乐部月卡领取", true); // API("APP") --> 无log输出
