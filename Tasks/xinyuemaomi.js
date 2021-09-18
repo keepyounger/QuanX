@@ -112,7 +112,7 @@ async function lilianStart(num) {
         } else {
             if (level > 2) {
                 $.msg("历练错误, 历练未开始, 尝试进入关卡3")
-                $.wait(timeout(3000)).then(async () => {
+                await $.wait(timeout(3000)).then(async () => {
                     await lilianStart(level - 1);
                 });
             } else {
@@ -238,12 +238,12 @@ async function pairs() {
         var match = data.modRet.jData.matchPower;
         if (match > power) {
             $.msg("匹配战力: " + match + ", 战力太高重新匹配")
-            $.wait(timeout()).then(async() => {
+            await $.wait(timeout()).then(async() => {
                 await pairs();
             });
         } else {
             $.msg("匹配战力: " + match + ", 开始战斗")
-            $.wait(timeout()).then(async() => {
+            await $.wait(timeout()).then(async() => {
                 await fightting();
             });
         }

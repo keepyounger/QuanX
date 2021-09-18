@@ -6,6 +6,9 @@
         },
         {
             "config":"0 10,15,20 * * * https:\/\/raw.githubusercontent.com\/keepyounger\/QuanX\/main\/Tasks\/xinyuemaomi.js, img-url=https:\/\/raw.githubusercontent.com\/keepyounger\/QuanX\/main\/Tasks\/xinyue.png, tag=心悦猫咪, enabled=true"
+        },
+        {
+            "config":"10 9 16-22 * * https:\/\/raw.githubusercontent.com\/keepyounger\/QuanX\/main\/Tasks\/xinyuejnh.js, img-url=https:\/\/raw.githubusercontent.com\/keepyounger\/QuanX\/main\/Tasks\/xinyue.png, tag=心悦嘉年华, enabled=true"
         }
     ],
     "description":"My Tasks."
