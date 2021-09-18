@@ -3,6 +3,9 @@
     "task":[
         {
             "config":"0 9 * * * https:\/\/raw.githubusercontent.com\/keepyounger\/QuanX\/main\/Tasks\/xinyueyueka.js, img-url=https:\/\/raw.githubusercontent.com\/keepyounger\/QuanX\/main\/Tasks\/xinyue.png, tag=心悦俱乐部月卡, enabled=true"
+        },
+        {
+            "config":"0 10,15,20 * * * https:\/\/raw.githubusercontent.com\/keepyounger\/QuanX\/main\/Tasks\/xinyuemaomi.js, img-url=https:\/\/raw.githubusercontent.com\/keepyounger\/QuanX\/main\/Tasks\/xinyue.png, tag=心悦猫咪, enabled=true"
         }
     ],
     "description":"My Tasks."

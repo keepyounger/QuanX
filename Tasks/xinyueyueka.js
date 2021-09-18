@@ -5,33 +5,20 @@ Last Modified time: 2021-9-18
 ============Quantumultx===============
 [task_local]
 #心悦俱乐部月卡领取
-0 9 * * *  xinyueyueka.js, tag=心悦俱乐部月卡领取, img-url=https://raw.githubusercontent.com/keepyounger/QuanX/main/Tasks/xinyue.png, enabled=true
+0 9 * * * xinyueyueka.js, tag=心悦俱乐部月卡领取, img-url=https://raw.githubusercontent.com/keepyounger/QuanX/main/Tasks/xinyue.png, enabled=true
 
 ================Loon==============
 [Script]
-cron "0 9 * * * " script-path=xinyueyueka.js,tag=心悦俱乐部月卡领取
+cron "0 9 * * *" script-path=xinyueyueka.js,tag=心悦俱乐部月卡领取
 
 ===============Surge=================
-心悦俱乐部月卡领取 = type=cron,cronexp="0 9 * * * ",wake-system=1,timeout=3600,script-path=xinyueyueka.js
+心悦俱乐部月卡领取 = type=cron,cronexp="0 9 * * *",wake-system=1,timeout=3600,script-path=xinyueyueka.js
 
 ============小火箭=========
-心悦俱乐部月卡领取 = type=cron,script-path=xinyueyueka.js, cronexpr="0 9 * * * ", timeout=3600, enable=true
+心悦俱乐部月卡领取 = type=cron,script-path=xinyueyueka.js, cronexpr="0 9 * * *", timeout=3600, enable=true
  */
 
 const $ = API("心悦俱乐部月卡领取", true); // API("APP") --> 无log输出
-
-var power = 0;
-var score = 0;
-
-//超时函数
-function timeout() {
-    var time = parseInt(Math.random() * 8000);
-    if (time < 5000) {
-        time = 5000;
-    }
-    console.warn("延迟" + time + "ms");
-    return time
-}
 
 function objectBodyToString(object) {
     var str = ""
@@ -44,9 +31,48 @@ function objectBodyToString(object) {
 }
 
 !(async () => {
+    await chekin();
     await yueka();
+    await $.notify($.name, $.logs.join('\n'));
 })().catch((e) => $.log(e + ""))
     .finally(() => $.done());
+
+async function chekin() {
+    await $.http.post({
+        url: "https://act.game.qq.com/ams/ame/amesvr?ameVersion=0.3&sServiceType=tgclub&iActivityId=141920&sServiceDepartment=xinyue&sSDID=ceb8ee081f8c6aa533d70b8887367d03&sMiloTag=AMS-MILO-141920-497774-7720CF4D27C3814FFAEC4C7292347609-1627960624461-JfaCDC&_=1627960624461",
+        headers: {
+            "Accept":"*/*",
+            "Origin":"https://xinyue.qq.com",
+            "Cookie":"access_token=1C98366958A03BDEBC893514169AAEAC; acctype=qc; appid=101484782; openid=7720CF4D27C3814FFAEC4C7292347609; refresh_token=; xyapp_login_type=qc; eas_sid=B176C2f7L9k559S6y6G0t5q7c7; pgv_info=ssid=s4121196540; pgv_pvid=1211201646; xinyueqqcomrouteLine=a20180912tgclubcat",
+            "Content-Type":"application/x-www-form-urlencoded",
+            "Host":"act.game.qq.com",
+            "Connection":"keep-alive",
+            "User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 tgclub/5.7.13 Scale/3.00",
+            "Referer":"https://xinyue.qq.com/act/a20180912tgclubcat/index.html",
+            "Accept-Language":"zh-cn"
+        },
+        body: objectBodyToString({
+            "extraStr":"%2522mod1%2522%253A%25221%2522%252C%2522mod2%2522%253A%25220%2522%252C%2522mod3%2522%253A%2522x42%2522",
+            "iActivityId":"141920",
+            "iFlowId":"497774",
+            "g_tk":"1842395457",
+            "e_code":"0",
+            "g_code":"0",
+            "eas_url":"http://xinyue.qq.com/act/a20180912tgclubcat/",
+            "eas_refer":"http://noreferrer/?reqid=49a65ce4-4e26-4ae4-9295-d55fd54f2a47&version=24",
+            "sServiceDepartment":"xinyue",
+            "sServiceType":"tgclub",
+        })
+    }).then((res) => {
+        var data = JSON.parse($.stringify(res.body));
+        if (data.ret == 0) {
+            $.msg("签到结果:" + "签到完成");
+        } else {
+            $.msg("签到结果:" + data.msg);
+        }
+    });
+}
+
 
 async function yueka() {
     await $.http.post({
@@ -88,9 +114,9 @@ async function yueka() {
     }).then((res) => {
         var data = JSON.parse($.stringify(res.body));
         if (data.ret == 0) {
-            $.msg(data.modRet.sMsg);
+            $.msg("月卡1结果" + data.modRet.sMsg);
         } else {
-            $.msg(data.msg);
+            $.msg("月卡1结果" + data.msg);
         }
     });
 
@@ -133,13 +159,11 @@ async function yueka() {
     }).then((res) => {
         var data = JSON.parse($.stringify(res.body));
         if (data.ret == 0) {
-            $.msg(data.modRet.sMsg);
+            $.msg("月卡2结果" + data.modRet.sMsg);
         } else {
-            $.msg(data.msg);
+            $.msg("月卡2结果" + data.msg);
         }
     });
-
-    $.notify($.name, $.logs.join('\n'));
 }
 
 
