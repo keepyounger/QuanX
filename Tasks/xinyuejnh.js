@@ -24,28 +24,27 @@ var times = 0;
 var score = 0;
 
 !(async () => {
-    await jianianhua(269);
+    for (var i = 0; i < 369; i++) {
+        await $.wait(3500).then(async() => {
+            await jianianhua();
+        });
+    }
     $.msg("本次运行" + times + "次，得分" + score);
     await $.notify($.name, $.logs.join('\n'));
 })().catch((e) => $.log(e + ""))
     .finally(() => $.done());
 
-async function jianianhua(num) {
+async function jianianhua() {
     await $.http.post({
         url: "https://act.game.qq.com/ams/ame/amesvr?ameVersion=0.3&sServiceType=tgclub&iActivityId=155525&sServiceDepartment=xinyue&sSDID=2d96e8f3974563e50703956d42514c4e&sMiloTag=AMS-MILO-155525-603340-7720CF4D27C3814FFAEC4C7292347609-1626827527477-AX84cZ&_=1626827527479",
         headers: {"Accept": "*/*","Accept-Language": "zh-cn","Connection": "keep-alive","Content-Type": "application/x-www-form-urlencoded","Cookie": "access_token=1C98366958A03BDEBC893514169AAEAC; acctype=qc; appid=101484782; ieg_ams_session_token=; ieg_ams_token=; ieg_ams_token_time=; openid=7720CF4D27C3814FFAEC4C7292347609; refresh_token=; xyapp_login_type=qc; pgv_info=ssid=s4643183028; pgv_pvid=1211201646; tokenParams=%3FADTAG%3Dad_app.gf.chanchu; xinyueqqcomrouteLine=a20180912tgclubcat_a20171031lclk_a20171031lclk_a20180912tgclubcat_a20210625jnh_a20210625jnh_a20180912tgclubcat; eas_sid=7116x2b6W7m9b6e6c8K9p5x8A6","Host": "act.game.qq.com","Origin": "https://xinyue.qq.com","Referer": "https://xinyue.qq.com/act/a20180906gifts/index.html","User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 tgclub/5.7.13 Scale/3.00"},
         body: "gameId=&sArea=&iSex=&sRoleId=&iGender=&extraStr=%252522mod1%252522%25253A%2525221%252522%25252C%252522mod2%252522%25253A%2525224%252522%25252C%252522mod3%252522%25253A%252522x48%252522&sServiceType=tgclub&objCustomMsg=&areaname=&roleid=&rolelevel=&rolename=&areaid=&iActivityId=155525&iFlowId=603340&g_tk=1842395457&e_code=0&g_code=0&eas_url=http%3A%2F%2Fxinyue.qq.com%2Fact%2Fa20180906gifts%2F&eas_refer=http%3A%2F%2Fxinyue.qq.com%2Fact%2Fa20180906gifts%2Fshare.html%3Freqid%3D7403326a-a8a8-484d-9f11-33480da59dd4%26version%3D24&sServiceDepartment=xinyue"
-    }).then(async(res) => {
+    }).then((res) => {
         times ++;
         var data = JSON.parse($.stringify(res.body));
         if (data.ret == 0) {
             $.msg("本次得分" + data.modRet.sPackageName);
             score += (parseInt(data.modRet.sPackageName) || 0);
-        }
-        if (num > 1) {
-            await $.wait(3500).then(async() => {
-                await jianianhua(num - 1);
-            });
         }
     });
 }
