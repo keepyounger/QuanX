@@ -62,7 +62,7 @@ async function login(email, password, then) {
         })
     }).then(async (res) => {
         var headers = JSON.parse(JSON.stringify(res)).headers;
-        var setCookie = (headers["set-cookie"] || headers["Set-Cookie"]).join();
+        var setCookie = headers["Set-Cookie"] || headers["set-cookie"].join();
         var cookies = ""
         
         var ca = setCookie.split(';');
