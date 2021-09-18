@@ -24,7 +24,7 @@ var times = 0;
 var score = 0;
 
 !(async () => {
-    await jianianhua(2);
+    await jianianhua(269);
     $.msg("本次运行" + times + "次，得分" + score);
     await $.notify($.name, $.logs.join('\n'));
 })().catch((e) => $.log(e + ""))
