@@ -24,7 +24,7 @@ var times = 0;
 var score = 0;
 
 !(async () => {
-    for (var i = 0; i < 2; i++) {
+    for (var i = 0; i < 369; i++) {
         await $.wait(3500).then(async() => {
             await jianianhua();
         });
