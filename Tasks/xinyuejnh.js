@@ -5,17 +5,17 @@ Last Modified time: 2021-9-22
 ============Quantumultx===============
 [task_local]
 #心悦嘉年华
-20 8 * * * xinyuejnh.js, tag=心悦嘉年华, img-url=https://raw.githubusercontent.com/keepyounger/QuanX/main/Tasks/xinyue.png, enabled=true
+20 8 16-22 * * xinyuejnh.js, tag=心悦嘉年华, img-url=https://raw.githubusercontent.com/keepyounger/QuanX/main/Tasks/xinyue.png, enabled=true
 
 ================Loon==============
 [Script]
-cron "20 8 * * *" script-path=xinyuejnh.js,tag=心悦嘉年华
+cron "20 8 16-22 * *" script-path=xinyuejnh.js,tag=心悦嘉年华
 
 ===============Surge=================
-心悦嘉年华 = type=cron,cronexp="20 8 * * *",wake-system=1,timeout=3600,script-path=xinyuejnh.js
+心悦嘉年华 = type=cron,cronexp="20 8 16-22 * *",wake-system=1,timeout=3600,script-path=xinyuejnh.js
 
 ============小火箭=========
-心悦嘉年华 = type=cron,script-path=xinyuejnh.js, cronexpr="20 8 * * *", timeout=3600, enable=true
+心悦嘉年华 = type=cron,script-path=xinyuejnh.js, cronexpr="20 8 16-22 * *", timeout=3600, enable=true
  */
 
 const $ = Env("心悦嘉年华"); // API("APP") --> 无log输出
