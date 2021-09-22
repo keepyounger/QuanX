@@ -18,7 +18,7 @@ cron "20 8 16-22 * *" script-path=xinyuejnh.js,tag=心悦嘉年华
 心悦嘉年华 = type=cron,script-path=xinyuejnh.js, cronexpr="20 8 16-22 * *", timeout=3600, enable=true
  */
 
-const $ = Env("心悦嘉年华"); // API("APP") --> 无log输出
+const $ = new Env("心悦嘉年华");
 
 var times = 0;
 var score = 0;

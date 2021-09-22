@@ -18,7 +18,7 @@ cron "15 8 * * *" script-path=xinyueyueka.js,tag=心悦俱乐部月卡领取
 心悦俱乐部月卡领取 = type=cron,script-path=xinyueyueka.js, cronexpr="15 8 * * *", timeout=3600, enable=true
  */
 
-const $ = Env("心悦俱乐部月卡领取");
+const $ = new Env("心悦俱乐部月卡领取");
 
 !(async () => {
     await chekin();

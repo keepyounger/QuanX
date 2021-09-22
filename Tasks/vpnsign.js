@@ -18,7 +18,7 @@ VPN签到 = type=cron,cronexp="10 8 * * *",wake-system=1,timeout=3600,script-pat
 VPN签到 = type=cron,script-path=vpnsign.js, cronexpr="10 8 * * *", timeout=3600, enable=true
  */
 
-const $ = Env("VPN签到");
+const $ = new Env("VPN签到");
 
 var accounts = [
     {email: "jackie.ky@qq.com", password: "kyLxy0525."}, 

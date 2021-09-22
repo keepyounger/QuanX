@@ -18,7 +18,7 @@ cron "0 10,15,20 * * *" script-path=xinyuemaomi.js,tag=心悦猫咪
 心悦猫咪 = type=cron,script-path=xinyuemaomi.js, cronexpr="0 10,15,20 * * *", timeout=3600, enable=true
  */
 
-const $ = Env("心悦猫咪");
+const $ = new Env("心悦猫咪");
 
 //超时函数
 function timeout(t) {
