@@ -103,7 +103,7 @@ async function lilianStart(num) {
             }
         } else {
             if (level > 2) {
-                $.msg("历练错误, 历练未开始, 尝试进入关卡3")
+                $.msg("进入关卡" + level + "错误, 尝试进入关卡" + (level - 1))
                 await $.wait(timeout(3000)).then(async () => {
                     await lilianStart(level - 1);
                 });
