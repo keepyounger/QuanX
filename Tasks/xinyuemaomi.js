@@ -201,7 +201,6 @@ async function pairs() {
     await $.http.post({
         url: "https://act.game.qq.com/ams/ame/amesvr?ameVersion=0.3&sServiceType=tgclub&iActivityId=141920&sServiceDepartment=xinyue&sSDID=ceb8ee081f8c6aa533d70b8887367d03&sMiloTag=AMS-MILO-141920-471145-7720CF4D27C3814FFAEC4C7292347609-1626865949978-aaOrrD&_=1626865949978",
         headers: {
-            "Accept-Encoding":"gzip, deflate, br",
             "Origin":"https://xinyue.qq.com",
             "Connection":"keep-alive",
             "Cookie":"access_token=1C98366958A03BDEBC893514169AAEAC; acctype=qc; appid=101484782; openid=7720CF4D27C3814FFAEC4C7292347609; refresh_token=; xyapp_login_type=qc; pgv_info=ssid=s4643183028; pgv_pvid=1211201646; tokenParams=%3FADTAG%3Dad_app.gf.chanchu; ieg_ams_session_token=; ieg_ams_token=; ieg_ams_token_time=; xinyueqqcomrouteLine=a20180912tgclubcat_a20171031lclk_a20171031lclk_a20180912tgclubcat_a20210625jnh_a20210625jnh_a20180912tgclubcat; eas_sid=7116x2b6W7m9b6e6c8K9p5x8A6",
@@ -245,7 +244,6 @@ async function fightting() {
     await $.http.post({
         url: "https://act.game.qq.com/ams/ame/amesvr?ameVersion=0.3&sServiceType=tgclub&iActivityId=141920&sServiceDepartment=xinyue&sSDID=ceb8ee081f8c6aa533d70b8887367d03&sMiloTag=AMS-MILO-141920-508006-7720CF4D27C3814FFAEC4C7292347609-1626865953838-2W8CSK&_=1626865953838",
         headers: {
-            "Accept-Encoding":"gzip, deflate, br",
             "Origin":"https://xinyue.qq.com",
             "Connection":"keep-alive",
             "Cookie":"access_token=1C98366958A03BDEBC893514169AAEAC; acctype=qc; appid=101484782; openid=7720CF4D27C3814FFAEC4C7292347609; refresh_token=; xyapp_login_type=qc; pgv_info=ssid=s4643183028; pgv_pvid=1211201646; tokenParams=%3FADTAG%3Dad_app.gf.chanchu; ieg_ams_session_token=; ieg_ams_token=; ieg_ams_token_time=; xinyueqqcomrouteLine=a20180912tgclubcat_a20171031lclk_a20171031lclk_a20180912tgclubcat_a20210625jnh_a20210625jnh_a20180912tgclubcat; eas_sid=7116x2b6W7m9b6e6c8K9p5x8A6",
