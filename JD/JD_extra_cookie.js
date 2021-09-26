@@ -89,7 +89,7 @@ function GetCookie() {
         $.notify(
           "用户名: " + DecodeName,
           "",
-          tipPrefix + CookieName + "Cookie成功 🎉"
+          tipPrefix + CookieName + "Cookie成功 🎉\n" + cacheValue
         );
       } else {
         $.notify("写入京东Cookie失败", "", "请查看脚本内说明, 登录网页获取 ‼️");
