@@ -33,7 +33,7 @@ function GetCookie() {
     if (/^https:\/\/(me-|)api(\.m|)\.jd\.com\/(client\.|user_new)/.test(req.url)) {
       if (ckItems && ckItems.length == 2) {
         var cookies = ckItems.join('')
-        $.msg("京东web Cookies 获取成功！", "在运行日志中查看", cookies);
+        $.msg("京东web Cookies 获取成功！", "点击查看", cookies);
     }
   }
   $.done();
