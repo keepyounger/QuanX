@@ -34,8 +34,7 @@ const headers = {
     "Host": "nyan.mail.wo.cn",
     "Origin": "https://nyan.mail.wo.cn",
     "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148",
-    "X-Requested-With": "XMLHttpRequest",
-    "Referer": ""
+    "X-Requested-With": "XMLHttpRequest"
 };
 
 //超时函数
@@ -68,13 +67,13 @@ async function login(url) {
         url: url
     }).then(async (res) => {
         var referer = "https://nyan.mail.wo.cn/cn/sign/wap/index.html?time=" + (new Date().getTime()-1000);
-        headers.Referer = referer;
+        headers["Referer"] = referer;
         //不是 quanx
         if (typeof $task === "undefined") {
             var headers = $.parse(res).headers;
             var setCookie = headers["Set-Cookie"] || headers["set-cookie"].join();
             cookies = setCookie.split(';')[0];
-            headers.Cookie = cookies;
+            headers["Cookie"] = cookies;
         }
         await $.wait(timeout(3000)).then(async () => {
                 await checkNum();
