@@ -67,13 +67,13 @@ async function login(url) {
         url: url
     }).then(async (res) => {
         var referer = "https://nyan.mail.wo.cn/cn/sign/wap/index.html?time=" + (new Date().getTime()-1000);
-        headers["Referer"] = referer;
+        headers.Referer = referer;
         //不是 quanx
         if (typeof $task === "undefined") {
             var headers = $.parse(res).headers;
             var setCookie = headers["Set-Cookie"] || headers["set-cookie"].join();
             cookies = setCookie.split(';')[0];
-            headers["Cookie"] = cookies;
+            headers.Cookie = cookies;
         }
         await $.wait(timeout(3000)).then(async () => {
                 await checkNum();
