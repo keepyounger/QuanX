@@ -29,7 +29,7 @@ let pt_pin = cookie.match(/(pt_pin=[^;]*)/)[1]
 console.log('================')
 console.log(`${pt_key};${pt_pin};`)
 console.log('================')
-$.msg("app_open获取成功！", "在运行日志中查看")
+$.msg("app_open获取成功！", "在运行日志中查看", `${pt_key};${pt_pin};`)
 
 function Env(t, e) {
   "undefined" != typeof process && JSON.stringify(process.env).indexOf("GITHUB") > -1 && process.exit(0);
