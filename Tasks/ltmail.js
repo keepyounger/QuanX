@@ -27,7 +27,7 @@ var accounts = [
     {phone: "15583378691", url: "https://nyan.mail.wo.cn/cn/sign/index/index?mobile=KhopAMqulyO5ewIqXbQt8w%3D%3D&userName=&openId=cDLLCi%2Fpd1X%2FPlojRDBS60acPScKSirXYqtrfoJtTZ8%3D"}, 
 ]
 
-const headers = {
+var headers = {
     "Accept": "application/json, text/javascript, */*; q=0.01",
     "Accept-Language": "zh-CN,zh-Hans;q=0.9",
     "Connection": "keep-alive",
@@ -66,14 +66,13 @@ async function login(url) {
     await $.http.get({
         url: url
     }).then(async (res) => {
-        var referer = "https://nyan.mail.wo.cn/cn/sign/wap/index.html?time=" + (new Date().getTime()-1000);
-        headers["Referer"] = referer;
+        headers.Referer = "https://nyan.mail.wo.cn/cn/sign/wap/index.html?time=" + (new Date().getTime()-1000);
         //不是 quanx
         if (typeof $task === "undefined") {
             var headers = $.parse(res).headers;
             var setCookie = headers["Set-Cookie"] || headers["set-cookie"].join();
             cookies = setCookie.split(';')[0];
-            headers["Cookie"] = cookies;
+            headers.Cookie = cookies;
         }
         await $.wait(timeout(3000)).then(async () => {
                 await checkNum();
