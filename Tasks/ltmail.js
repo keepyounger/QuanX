@@ -52,7 +52,7 @@ function timeout(t) {
         $.done()
     });
 
-var headers = {
+const headers = {
     "Accept": "application/json, text/javascript, */*; q=0.01",
     "Accept-Language": "zh-CN,zh-Hans;q=0.9",
     "Connection": "keep-alive",
@@ -67,7 +67,7 @@ async function login(url) {
         url: url
     }).then(async (res) => {
         var referer = "https://nyan.mail.wo.cn/cn/sign/wap/index.html?time=" + (new Date().getTime()-1000);
-        headers["Referer"] = referer
+        headers["Referer"] = referer;
         //不是 quanx
         if (typeof $task === "undefined") {
             var headers = $.parse(res).headers;
