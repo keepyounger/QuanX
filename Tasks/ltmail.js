@@ -66,7 +66,6 @@ async function login(url) {
     await $.http.get({
         url: url
     }).then(async (res) => {
-        console.log(headers);
         headers.Referer = "https://nyan.mail.wo.cn/cn/sign/wap/index.html?time=" + (new Date().getTime()-1000);
         //不是 quanx
         if (typeof $task === "undefined") {
