@@ -52,36 +52,41 @@ function timeout(t) {
         $.done()
     });
 
+var headers = {
+    "Accept": "application/json, text/javascript, */*; q=0.01",
+    "Accept-Language": "zh-CN,zh-Hans;q=0.9",
+    "Connection": "keep-alive",
+    "Host": "nyan.mail.wo.cn",
+    "Origin": "https://nyan.mail.wo.cn",
+    "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148",
+    "X-Requested-With": "XMLHttpRequest"
+};
+
 async function login(url) {
     await $.http.get({
         url: url
     }).then(async (res) => {
-        var headers = $.parse(res).headers;
-        var setCookie = headers["Set-Cookie"] || headers["set-cookie"].join();
-        var cookies = setCookie.split(';')[0];
         var referer = "https://nyan.mail.wo.cn/cn/sign/wap/index.html?time=" + (new Date().getTime()-1000);
+        headers["Referer"] = referer
+        //不是 quanx
+        if (typeof $task === "undefined") {
+            var headers = $.parse(res).headers;
+            var setCookie = headers["Set-Cookie"] || headers["set-cookie"].join();
+            cookies = setCookie.split(';')[0];
+            headers["Cookie"] = cookies;
+        }
         await $.wait(timeout(3000)).then(async () => {
-                await checkNum(cookies, referer);
-                await checkTasks(cookies, referer);
+                await checkNum();
+                await checkTasks();
             });
     });
 }
 
-async function checkNum(cookies, referer) {
+async function checkNum() {
     var signUrl = "https://nyan.mail.wo.cn/cn/sign/index/userinfo.do?rand=" + Math.random();
     await $.http.post({
         url: signUrl,
-        headers: {
-            "Accept": "application/json, text/javascript, */*; q=0.01",
-            "Accept-Language": "zh-CN,zh-Hans;q=0.9",
-            "Connection": "keep-alive",
-            "Host": "nyan.mail.wo.cn",
-            "Origin": "https://nyan.mail.wo.cn",
-            "Referer": referer,
-            "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148",
-            "X-Requested-With": "XMLHttpRequest",
-            "Cookie": cookies,
-        }
+        headers: headers
     }).then(async (res) => {
         var data =$.parse(res.body);
         var score = data.result.clubScore;
@@ -99,27 +104,17 @@ async function checkNum(cookies, referer) {
             $.msg("签到大于等于21天，跳过签到")
         } else {
             await $.wait(timeout(5000)).then(async () => {
-                    await checkin(cookies, referer);
+                    await checkin();
                 });
         }
     });
 }
 
-async function checkin(cookies, referer) {
+async function checkin() {
     var signUrl = "https://nyan.mail.wo.cn/cn/sign/user/checkin.do?rand=" + Math.random();
     await $.http.get({
         url: signUrl,
-        headers: {
-            "Accept": "application/json, text/javascript, */*; q=0.01",
-            "Accept-Language": "zh-CN,zh-Hans;q=0.9",
-            "Connection": "keep-alive",
-            "Host": "nyan.mail.wo.cn",
-            "Origin": "https://nyan.mail.wo.cn",
-            "Referer": referer,
-            "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148",
-            "X-Requested-With": "XMLHttpRequest",
-            "Cookie": cookies,
-        }
+        headers: headers
     }).then(async (res) => {
         var data =$.parse(res.body);
         var num = data.result;
@@ -133,22 +128,12 @@ async function checkin(cookies, referer) {
     });
 }
 
-async function checkTasks(cookies, referer) {
+async function checkTasks() {
     var signUrl = "https://nyan.mail.wo.cn/cn/sign/user/overtask.do?rand=" + Math.random();
     await $.http.post({
         url: signUrl,
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-            "Accept": "application/json, text/javascript, */*; q=0.01",
-            "Accept-Language": "zh-CN,zh-Hans;q=0.9",
-            "Connection": "keep-alive",
-            "Host": "nyan.mail.wo.cn",
-            "Origin": "https://nyan.mail.wo.cn",
-            "Referer": referer,
-            "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148",
-            "X-Requested-With": "XMLHttpRequest",
-            "Cookie": cookies,
-        },
+        headers: headers,
+            // "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
         body: "taskLevel=2"
     }).then(async (res) => {
         var data =$.parse(res.body);        
@@ -157,7 +142,7 @@ async function checkTasks(cookies, referer) {
              $.msg(item.taskName);
             if (item.taskState == 1) {
                 await $.wait(timeout()).then(async () => {
-                    await checkInTasks(cookies, referer, item.taskName);
+                    await checkInTasks(item.taskName);
                 });
             } else {
                 $.msg("任务已完成");
@@ -166,21 +151,11 @@ async function checkTasks(cookies, referer) {
     });
 }
 
-async function checkInTasks(cookies, referer, task) {
+async function checkInTasks(task) {
     var signUrl = "https://nyan.mail.wo.cn/cn/sign/user/doTask.do";
     await $.http.post({
         url: signUrl,
-        headers: {
-            "Accept": "application/json, text/javascript, */*; q=0.01",
-            "Accept-Language": "zh-CN,zh-Hans;q=0.9",
-            "Connection": "keep-alive",
-            "Host": "nyan.mail.wo.cn",
-            "Origin": "https://nyan.mail.wo.cn",
-            "Referer": referer,
-            "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148",
-            "X-Requested-With": "XMLHttpRequest",
-            "Cookie": cookies,
-        },
+        headers: headers,
         body: "taskName=" + task
     }).then(async (res) => {
         var data =$.parse(res.body);
