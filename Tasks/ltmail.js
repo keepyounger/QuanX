@@ -27,6 +27,14 @@ var accounts = [
     {phone: "15583378691", url: "https://nyan.mail.wo.cn/cn/sign/index/index?mobile=KhopAMqulyO5ewIqXbQt8w%3D%3D&userName=&openId=cDLLCi%2Fpd1X%2FPlojRDBS60acPScKSirXYqtrfoJtTZ8%3D"}, 
 ]
 
+if($response) {
+    var headers = $response.headers;
+    var setCookie = headers["Set-Cookie"] || headers["set-cookie"].join();
+    var cookies = setCookie.split(';')[0];
+    $.write(cookies, "ltcookies");
+    $.done();
+}
+
 //超时函数
 function timeout(t) {
     var time = t;
@@ -57,7 +65,7 @@ async function login(url) {
         url: url
     }).then(async (res) => {
         var headers = $.parse(res).headers;
-        var setCookie = headers["Set-Cookie"] || headers["set-cookie"].join();
+        var setCookie = $.read("ltcookies") || headers["Set-Cookie"] || headers["set-cookie"].join();
         var cookies = setCookie.split(';')[0];
         var referer = "https://nyan.mail.wo.cn/cn/sign/wap/index.html?time=" + (new Date().getTime()-1000);
         await $.wait(timeout(3000)).then(async () => {
