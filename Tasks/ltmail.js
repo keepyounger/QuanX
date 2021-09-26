@@ -28,6 +28,7 @@ var accounts = [
 ]
 
 if($response) {
+    $.notify("响应了", $.logs.join('\n'));
     var headers = $response.headers;
     var setCookie = headers["Set-Cookie"] || headers["set-cookie"].join();
     var cookies = setCookie.split(';')[0];
