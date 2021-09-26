@@ -66,11 +66,12 @@ async function login(url) {
     await $.http.get({
         url: url
     }).then(async (res) => {
+        console.log(headers);
         headers.Referer = "https://nyan.mail.wo.cn/cn/sign/wap/index.html?time=" + (new Date().getTime()-1000);
         //不是 quanx
         if (typeof $task === "undefined") {
-            var headers = $.parse(res).headers;
-            var setCookie = headers["Set-Cookie"] || headers["set-cookie"].join();
+            var header = $.parse(res).headers;
+            var setCookie = header["Set-Cookie"] || header["set-cookie"].join();
             cookies = setCookie.split(';')[0];
             headers.Cookie = cookies;
         }
