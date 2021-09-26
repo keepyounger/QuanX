@@ -27,6 +27,16 @@ var accounts = [
     {phone: "15583378691", url: "https://nyan.mail.wo.cn/cn/sign/index/index?mobile=KhopAMqulyO5ewIqXbQt8w%3D%3D&userName=&openId=cDLLCi%2Fpd1X%2FPlojRDBS60acPScKSirXYqtrfoJtTZ8%3D"}, 
 ]
 
+const headers = {
+    "Accept": "application/json, text/javascript, */*; q=0.01",
+    "Accept-Language": "zh-CN,zh-Hans;q=0.9",
+    "Connection": "keep-alive",
+    "Host": "nyan.mail.wo.cn",
+    "Origin": "https://nyan.mail.wo.cn",
+    "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148",
+    "X-Requested-With": "XMLHttpRequest"
+};
+
 //超时函数
 function timeout(t) {
     var time = t;
@@ -51,16 +61,6 @@ function timeout(t) {
         $.notify($.name, $.logs.join('\n'));
         $.done()
     });
-
-const headers = {
-    "Accept": "application/json, text/javascript, */*; q=0.01",
-    "Accept-Language": "zh-CN,zh-Hans;q=0.9",
-    "Connection": "keep-alive",
-    "Host": "nyan.mail.wo.cn",
-    "Origin": "https://nyan.mail.wo.cn",
-    "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148",
-    "X-Requested-With": "XMLHttpRequest"
-};
 
 async function login(url) {
     await $.http.get({
