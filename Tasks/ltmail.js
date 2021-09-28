@@ -69,9 +69,9 @@ async function login(url) {
         headers.Referer = "https://nyan.mail.wo.cn/cn/sign/wap/index.html?time=" + (new Date().getTime()-1000);
         //不是 quanx
         if (typeof $task === "undefined") {
-            var header = $.parse(res).headers;
-            var setCookie = header["Set-Cookie"] || header["set-cookie"].join();
-            cookies = setCookie.split(';')[0];
+            var resHeaders = $.parse(res).headers;
+            var setCookie = resHeaders["Set-Cookie"] || resHeaders["set-cookie"].join();
+            var cookies = setCookie.split(';')[0];
             headers.Cookie = cookies;
         }
         await $.wait(timeout(3000)).then(async () => {
@@ -81,7 +81,7 @@ async function login(url) {
     });
 }
 
-async function checkNum() {
+async function checkNum(tag) {
     var signUrl = "https://nyan.mail.wo.cn/cn/sign/index/userinfo.do?rand=" + Math.random();
     await $.http.post({
         url: signUrl,
@@ -90,13 +90,18 @@ async function checkNum() {
         var data =$.parse(res.body);
         var score = data.result.clubScore;
         var num = data.result.keepSign;
+        
+        $.msg("已签到" + num + "天，当前分数" + score);
+        if (tag) {
+            return;
+        }
+        
         var lastday = data.result.lastDay + "";
         var date = new Date();
         var Y = date.getFullYear() + "";
         var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + "";
         var D = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate()) + "";
-
-        $.msg("已签到" + num + "天，当前分数" + score)
+        
         if (lastday == (Y + M + D)) {
             $.msg("今日已签到，跳过签到")
         } else if (num >= 21) {
@@ -114,7 +119,7 @@ async function checkin() {
     await $.http.get({
         url: signUrl,
         headers: headers
-    }).then(async (res) => {
+    }).then((res) => {
         var data =$.parse(res.body);
         var num = data.result;
         if (num > 0) {
@@ -128,25 +133,32 @@ async function checkin() {
 }
 
 async function checkTasks() {
+    // var tasks = ["download", "loginmail", "treasure", "club", "answer", "clubactivity", "invite"];
+    var tasks = ["loginmail", "club", "clubactivity"];
+    var tasksStatus = {};
     var signUrl = "https://nyan.mail.wo.cn/cn/sign/user/overtask.do?rand=" + Math.random();
     await $.http.post({
         url: signUrl,
         headers: headers,
-            // "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
         body: "taskLevel=2"
     }).then(async (res) => {
         var data =$.parse(res.body);        
         for (let i = 0; i < data.result.length; i++) {
         	let item = data.result[i];
-             $.msg(item.taskName);
-            if (item.taskState == 1) {
+            $.msg(item.taskName + "已完成");
+            tasksStatus[item.taskName] = 1;
+        }
+        var flag = false;
+        for (let i = 0; i < tasks.length; i++) {
+            let item = tasks[i];
+            if (!tasksStatus[item]) {
+                flag = true;
                 await $.wait(timeout()).then(async () => {
-                    await checkInTasks(item.taskName);
+                    await checkInTasks(item);
                 });
-            } else {
-                $.msg("任务已完成");
             }
         }
+        flag && await checkNum(1);
     });
 }
 
@@ -158,14 +170,13 @@ async function checkInTasks(task) {
         body: "taskName=" + task
     }).then(async (res) => {
         var data =$.parse(res.body);
-        $.log($.stringify(res.body));
         var num = data.result;
         if (num > 0) {
-            $.msg("任务完成");
+            $.msg(task + "任务完成");
         } else if (num == -1) {
-            $.msg("重复任务");
+            $.msg(task + "重复任务");
         } else {
-            $.msg(m.result);
+            $.msg(task + m.result);
         }
     });
 }
