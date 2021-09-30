@@ -199,6 +199,9 @@
       "config" : "0 0,7,9,17,20 * * * https:\/\/raw.githubusercontent.com\/shufflewzc\/faker2\/main\/jd_joy_park_task.js, tag=汪汪乐园每日任务, img-url=https:\/\/raw.githubusercontent.com\/tsukasa007\/icon\/master\/jd_joypark_task.png, enabled=true"
     },
     {
+      "config" : "10 0 * * * https:\/\/raw.githubusercontent.com\/shufflewzc\/faker2\/main\/jd_kd.js, tag=京东快递签到, img-url=https:\/\/raw.githubusercontent.com\/58xinian\/icon\/master\/jd_kd.png, enabled=true"
+    },
+    {
       "config" : "20 0,20 * * * https:\/\/raw.githubusercontent.com\/shufflewzc\/faker2\/main\/jd_necklace_new.js, tag=点点券, img-url=https:\/\/raw.githubusercontent.com\/Orz-3\/mini\/master\/Color\/jd.png, enabled=true"
     },
     {
@@ -244,6 +247,9 @@
       "config" : "30 0,22 * * * https:\/\/raw.githubusercontent.com\/shufflewzc\/faker2\/main\/backUp\/gua_olympic_opencard.js, tag=奥运夺金牌开卡, img-url=https:\/\/raw.githubusercontent.com\/smiek2221\/scripts\/master\/gua_olympic_opencard.png, enabled=true"
     },
     {
+      "config" : "0 0 1 5 * https:\/\/raw.githubusercontent.com\/shufflewzc\/faker2\/main\/backUp\/jd_cleancart.js, tag=清空购物车, img-url=https:\/\/raw.githubusercontent.com\/Orz-3\/mini\/master\/Color\/jd.png, enabled=true"
+    },
+    {
       "config" : "5-45\/20 * * * * https:\/\/raw.githubusercontent.com\/shufflewzc\/faker2\/main\/jd_health_collect.js, tag=东东健康社区收集能量, img-url=https:\/\/raw.githubusercontent.com\/Orz-3\/mini\/master\/Color\/jd.png, enabled=true"
     },
     {
@@ -260,9 +266,6 @@
     },
     {
       "config" : "8 0-23\/3 * * * https:\/\/raw.githubusercontent.com\/shufflewzc\/faker2\/main\/jd_speed.js, tag=京东天天加速, img-url=https:\/\/raw.githubusercontent.com\/58xinian\/icon\/master\/jdjs.png, enabled=true"
-    },
-    {
-      "config" : "0 0 1 5 * https:\/\/raw.githubusercontent.com\/shufflewzc\/faker2\/main\/jd_cleancart.js, tag=清空购物车, img-url=https:\/\/raw.githubusercontent.com\/Orz-3\/mini\/master\/Color\/jd.png, enabled=true"
     },
     {
       "config" : "10 0,7,23 * * * https:\/\/raw.githubusercontent.com\/shufflewzc\/faker2\/main\/jd_syj.js, tag=赚京豆, img-url=https:\/\/raw.githubusercontent.com\/58xinian\/icon\/master\/jd_syj.png, enabled=true"
@@ -454,9 +457,6 @@
       "config" : "5 6-18\/6 * * * https:\/\/raw.githubusercontent.com\/Aaron-lv\/sync\/jd_scripts\/jd_fruit.js, tag=东东农场, img-url=https:\/\/raw.githubusercontent.com\/58xinian\/icon\/master\/jdnc.png, enabled=true"
     },
     {
-      "config" : "10 0 * * * https:\/\/raw.githubusercontent.com\/Aaron-lv\/sync\/jd_scripts\/jd_kd.js, tag=京东快递签到, img-url=https:\/\/raw.githubusercontent.com\/58xinian\/icon\/master\/jd_kd.png, enabled=true"
-    },
-    {
       "config" : "0 0 * * * https:\/\/raw.githubusercontent.com\/Aaron-lv\/sync\/jd_scripts\/jd_car_exchange.js, tag=京东汽车兑换, img-url=https:\/\/raw.githubusercontent.com\/58xinian\/icon\/master\/jd_redPacket.png, enabled=true"
     },
     {
@@ -466,6 +466,6 @@
       "config" : "10 * * * * https:\/\/raw.githubusercontent.com\/Aaron-lv\/sync\/jd_scripts\/jd_dreamFactory.js, tag=京喜工厂, img-url=https:\/\/github.com\/58xinian\/icon\/raw\/master\/jdgc.png, enabled=true"
     }
   ],
-  "name" : "QuanX",
-  "description" : "自动生成的任务"
+  "description" : "自动生成的任务",
+  "name" : "QuanX"
 }
