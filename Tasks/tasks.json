@@ -15,6 +15,9 @@
         },
         {
             "config":"50 7 * * * https:\/\/raw.githubusercontent.com\/keepyounger\/QuanX\/main\/Tasks\/ltmail.js, img-url=https:\/\/raw.githubusercontent.com\/keepyounger\/QuanX\/main\/Tasks\/lt.png, tag=联通邮箱签到, enabled=true"
+        },
+        {
+            "config":"30 23 * * * https:\/\/raw.githubusercontent.com\/keepyounger\/QuanX\/main\/Tasks\/tvideo.js, img-url=https:\/\/raw.githubusercontent.com\/keepyounger\/QuanX\/main\/Tasks\/tvideo.png, tag=腾讯视频, enabled=true"
         }
     ],
     "description":"My Tasks."
