@@ -20,15 +20,16 @@ cron "30 23 * * *" script-path=tvideo.js,tag=腾讯视频
 
 const $ = new Env("腾讯视频");
 
-var _cookie = "pgv_pvid=8456411088; pac_uid=0_35ec3afa0dff1; RK=rXAoOmF/T8; ptcz=216b9e5fd6bd0f6cdbeb4c843a1b0c6a68f7644d908a571414465710a2c170c4; _ga=GA1.2.1640746519.1622449886; tvfe_boss_uuid=623a359793788bbb; video_guid=75e4dd5060adf8d4; video_platform=2; pgv_info=ssid=s6892473056; main_login=qq; vqq_access_token=3902B19E36A0E8D6872AEB97D2B03D15; vqq_appid=101483052; vqq_openid=34981A2F675AF936A40E35FD43112581; vqq_vuserid=174859465; vqq_vusession=gmwSW4hTQG-8pe5y3hNyNw..; vqq_refresh_token=49DB209D6C7A4C31277C137C947221A1; login_time_init=2021-6-22 10:26:39; uid=120299115; vqq_next_refresh_time=2568; vqq_login_time_init=1624332831; login_time_last=2021-6-22 11:33:51"
-var _cookie2 = "pgv_pvid=8456411088; pac_uid=0_35ec3afa0dff1; RK=rXAoOmF/T8; ptcz=216b9e5fd6bd0f6cdbeb4c843a1b0c6a68f7644d908a571414465710a2c170c4; _ga=GA1.2.1640746519.1622449886; tvfe_boss_uuid=623a359793788bbb; video_guid=75e4dd5060adf8d4; video_platform=2; pgv_info=ssid=s6892473056; main_login=qq; vqq_access_token=3902B19E36A0E8D6872AEB97D2B03D15; vqq_appid=101483052; vqq_openid=34981A2F675AF936A40E35FD43112581; vqq_vuserid=174859465;  vqq_refresh_token=49DB209D6C7A4C31277C137C947221A1; login_time_init=2021-6-22 10:26:39; uid=120299115; vqq_next_refresh_time=2568; vqq_login_time_init=1624332831; login_time_last=2021-6-22 11:33:51;vqq_vusession=gmwSW4hTQG-8pe5y3hNyNw..;"
-
-var headers = {"Referer": "https://v.qq.com",
-               "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.204 Safari/537.36",
-               "Cookie": _cookie}
+var __cookie = "video_platform=2; pgv_info=ssid=s5324169433; pgv_pvid=7324549985; uid=120299115; login_time_last=2021-10-8 23:4:24; main_login=qq; vqq_access_token=F3549FC3D29ADE55CF5AAEE9977F1648; vqq_appid=101483052; vqq_login_time_init=1633705464; vqq_next_refresh_time=6599; vqq_openid=34981A2F675AF936A40E35FD43112581; vqq_refresh_token=19FC3C8BED4A14C6CD4D94846F3655BE; vqq_vuserid=174859465; vqq_vusession=kAZHzNzborU9hTaEJGRbtA..; login_time_init=2021-10-8 23:4:23; RK=eeBofkFvEc; ptcz=72ef13629b419a3b4f8f88f352aa06dad38560ec9a42beb00269c950fda7f1b4; ptui_loginuin=992282588; tvfe_boss_uuid=4d4d2bc64482a3c2; video_guid=667ace36b2b99178"
+var _cookie = ""
+var headers = {}
 var headers2 = {}
 
 !(async () => {
+    _cookie = $.read("tv_cookie") || __cookie
+    headers = {"Referer": "https://v.qq.com",
+                   "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.204 Safari/537.36",
+                   "Cookie": _cookie}
     await sign();
     
 })().catch((e) => $.msg(e + ""))
@@ -39,6 +40,7 @@ var headers2 = {}
     
 async function sign() {
     var cookie = await login();
+    $.write(cookie, "tv_cookie");
     var cookies = cookie.split(";");
     var vqq_vusession = "";
     for (var i = 0; i < cookies.length; i++) {
@@ -126,18 +128,18 @@ async function otherSign(type) {
 
 async function login() {
     var cookie = {};
-    var url = "https://access.video.qq.com/user/auth_refresh?vappid=11059694&vsecret=fdf61a6be0aad57132bc5cdf78ac30145b6cd2c1470b0cfe&type=qq&g_tk=&g_vstk=347528973&g_actk=754714835&callback=jQuery191011982547089738449_1624332891057&_=1624332891058"
+    var url = "https://access.video.qq.com/user/auth_refresh?vappid=11059694&vsecret=fdf61a6be0aad57132bc5cdf78ac30145b6cd2c1470b0cfe&type=qq&g_tk=&g_vstk=2062439518&g_actk=1418836162&callback=jQuery191044250535211304076_1633705506013&_=1633705506014"
     await $.http.get({
         url: url,
         headers: headers
     }).then((res) => {
-        var headers = $.parse(res).headers;
-        cookie = headers["Set-Cookie"] || headers["set-cookie"].join();
         var body = $.parse(res).body;
         if (body.indexOf("nick") != -1) {
             $.msg("验证成功，执行主程序")
+            var headers = $.parse(res).headers;
+            cookie = headers["Set-Cookie"] || headers["set-cookie"].join();
         } else {
-            $.msg("验证ref_url失败")
+            $.msg("验证ref_url失败" + body)
         }
     });
     return cookie;
