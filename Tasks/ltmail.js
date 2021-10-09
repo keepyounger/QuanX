@@ -55,12 +55,93 @@ function timeout(t) {
     	let item = accounts[i];
     	$.msg("\n" + item.phone);
     	await login(item.url);
+        await login2(item.phone);
     }
 })().catch((e) => $.msg(e + ""))
     .finally(() => {
         $.notify($.name, $.logs.join('\n'));
         $.done()
     });
+    
+async function login2(phone) {
+    var url = "https://account.bol.wo.cn/cuuser/cuauth/accountLogin?username=" + phone + "&password=kCNBeRRruKyYVBqd8vpiww%3D%3D&clientId=userclub&redirectUrl=https%3A%2F%2Fclub.mail.wo.cn%2Fclubwebservice%2Fclub-index%2Fhome-page&appType=2&state="
+    await $.http.post({
+        url: url,
+        headers: {
+            "Host": "account.bol.wo.cn",
+            "Connection": "keep-alive",
+            "Content-Length": "2",
+            "Accept": "application/json, text/plain, */*",
+            "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1",
+            "Content-Type": "application/json;charset=UTF-8",
+            "Origin": "https://account.bol.wo.cn",
+            "Sec-Fetch-Site": "same-origin",
+            "Sec-Fetch-Mode": "cors",
+            "Sec-Fetch-Dest": "empty",
+            "Referer": "https://account.bol.wo.cn/accountlogin?clientId=userclub&redirectUrl=https%3A%2F%2Fclub.mail.wo.cn%2Fclubwebservice%2Fclub-index%2Fhome-page",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
+            "Cookie": "OUTFOX_SEARCH_USER_ID_NCOO=444763728.3156945; pgv_pvid=7685035992; __qc_wId=47; ___rl__test__cookies=1633746932829"
+        }
+    }).then(async (res) => {
+        var body =$.parse(res.body);
+        await sign2(body.data);
+    });
+}
+
+async function sign2(redirctUrl) {
+    var hh = {
+        "Accept": "application/json, text/javascript, */*; q=0.01",
+        "Accept-Language": "zh-CN,zh-Hans;q=0.9",
+        "Connection": "keep-alive",
+        "Host": "club.mail.wo.cn",
+        "Referer": "https://club.mail.wo.cn/clubwebservice/club-index/home-page",
+        "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.14(0x18000e2a) NetType/WIFI Language/zh_CN",
+        "X-Requested-With": "XMLHttpRequest"};
+  
+    await $.http.get({
+        url: redirctUrl
+    }).then(async (res) => {
+        //不是 quanx
+        if (typeof $task === "undefined") {
+            var resHeaders = $.parse(res).headers;
+            var setCookie = resHeaders["Set-Cookie"] || resHeaders["set-cookie"].join();
+            hh.Cookie = setCookie;
+        }
+    });
+    
+    await $.wait(timeout())
+    
+    await $.http.get({
+        url: "https://club.mail.wo.cn/clubwebservice/club-user/user-sign/create",
+        headers: hh
+    }).then(async (res) => {
+        var body =$.parse(res.body);
+        $.msg(body.description);
+    });
+    
+    await $.wait(timeout())
+    
+    await $.http.get({
+        url: "https://club.mail.wo.cn/clubwebservice/growth/addIntegral?resourceType=Web_jifenduihuan%2B2jifen",
+        headers: hh
+    }).then(async (res) => {
+        var body =$.parse(res.body);
+        $.msg(body.description);
+    });
+    
+    await $.wait(timeout())
+    
+    await $.http.get({
+        url: "https://club.mail.wo.cn/clubwebservice/growth/addIntegral?resourceType=Web_canyujulebuhuodong%2B2jifen",
+        headers: hh
+    }).then(async (res) => {
+        var body =$.parse(res.body);
+        $.msg(body.description);
+    });
+    
+    
+}
 
 async function login(url) {
     await $.http.get({
