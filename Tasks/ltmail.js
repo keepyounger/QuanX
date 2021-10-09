@@ -117,7 +117,7 @@ async function sign2(redirctUrl) {
         headers: hh
     }).then(async (res) => {
         var body =$.parse(res.body);
-        $.msg(body.description);
+        $.msg("沃邮箱俱乐部 签到：" + body.description);
     });
     
     await $.wait(timeout())
@@ -127,7 +127,7 @@ async function sign2(redirctUrl) {
         headers: hh
     }).then(async (res) => {
         var body =$.parse(res.body);
-        $.msg(body.description);
+        $.msg("沃邮箱俱乐部 浏览积分兑换：" + body.description);
     });
     
     await $.wait(timeout())
@@ -137,7 +137,7 @@ async function sign2(redirctUrl) {
         headers: hh
     }).then(async (res) => {
         var body =$.parse(res.body);
-        $.msg(body.description);
+        $.msg("沃邮箱俱乐部 参与活动：" + body.description);
     });
     
     
