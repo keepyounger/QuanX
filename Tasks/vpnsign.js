@@ -25,11 +25,19 @@ var accounts = [
     {email: "ztyijia@163.com", password: "ZTyj2017."}
 ]
 
+//juzi69.com必须付费 jacike.ky@qq.com
+// var hosts = ["koozk.com","juzi69.com", "hxrtnt.com"]
+var hosts = ["koozk.com", "hxrtnt.com"]
+
 !(async () => {
     for (let i = 0; i < accounts.length; i++) {
     	let item = accounts[i];
     	$.msg("\n" + item.email);
-    	await login(item.email, item.password);
+        for (let j = 0; j < hosts.length; j++) {
+            var host = hosts[j];
+            $.msg("\n" + host);
+            await login(item.email, item.password, host);
+        }
     }
     $.msg("\nGLaDOS签到");
     await signGLaDOS();
@@ -39,9 +47,9 @@ var accounts = [
         $.done()
     });
 
-async function login(email, password) {
+async function login(email, password, host) {
     await $.http.post({
-        url: "https://koozk.com/auth/login",
+        url: "https://" + host + "/auth/login",
         headers: {
             "Cookie": "",
             "Accept":"application/json, text/javascript, */*; q=0.01",
@@ -54,9 +62,9 @@ async function login(email, password) {
         }
     }).then(async (res) => {
         var headers = $.parse(res).headers;
-        var setCookie = headers["Set-Cookie"] || headers["set-cookie"].join();
+        var setCookie = headers["Set-Cookie"] || headers["set-cookie"]
+        setCookie = typeof(setCookie) == "object" ? setCookie.join() : (setCookie + "");
         var cookies = ""
-        
         var ca = setCookie.split(';');
         for(var i=0; i<ca.length; i++) 
         {
@@ -67,14 +75,13 @@ async function login(email, password) {
                 cookies += e + "; ";
             }
         }
-        
-        await checkin(cookies);
+        await checkin(cookies, host);
     });
 }
 
-async function checkin(cookies) {
+async function checkin(cookies, host) {
     await $.http.post({
-        url: "https://koozk.com/user/checkin",
+        url: "https://" + host + "/user/checkin",
         headers: {
             "Cookie": cookies,
             "Accept":"application/json, text/javascript, */*; q=0.01",
