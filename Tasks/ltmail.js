@@ -113,7 +113,7 @@ async function sign2(redirctUrl) {
     await $.wait(timeout())
     
     await $.http.get({
-        url: "https://club.mail.wo.cn/clubwebservice/club-user/user-sign/create",
+        url: "https://club.mail.wo.cn/clubwebservice/club-user/user-sign/create?channelId=",
         headers: hh
     }).then(async (res) => {
         var body =$.parse(res.body);
