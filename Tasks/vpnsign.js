@@ -21,13 +21,15 @@ VPN签到 = type=cron,script-path=vpnsign.js, cronexpr="10 8 * * *", timeout=360
 const $ = new Env("VPN签到");
 
 var accounts = [
-    {email: "jackie.ky@qq.com", password: "kyLxy0525."}, 
-    {email: "ztyijia@163.com", password: "ZTyj2017."}
+    {email: "jackie.ky@foxmail.com", password: "kyLxy0525."}, 
+    // {email: "jackie.ky@qq.com", password: "kyLxy0525."}, 
+    // {email: "ztyijia@163.com", password: "ZTyj2017."}
 ]
 
 //jike138.com juzi69.com必须付费
 // var hosts = ["koozk.com","juzi69.com", "hxrtnt.com", "jike138.com"]
-var hosts = ["koozk.com", "hxrtnt.com"]
+// var hosts = ["koozk.com", "hxrtnt.com"]
+var hosts = ["hxrtnt.com"]
 
 !(async () => {
     for (let i = 0; i < accounts.length; i++) {
