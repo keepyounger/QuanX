@@ -25,8 +25,8 @@ var accounts = [
     {email: "ztyijia@163.com", password: "ZTyj2017."}
 ]
 
-//juzi69.com必须付费 jacike.ky@qq.com
-// var hosts = ["koozk.com","juzi69.com", "hxrtnt.com"]
+//jike138.com juzi69.com必须付费
+// var hosts = ["koozk.com","juzi69.com", "hxrtnt.com", "jike138.com"]
 var hosts = ["koozk.com", "hxrtnt.com"]
 
 !(async () => {
