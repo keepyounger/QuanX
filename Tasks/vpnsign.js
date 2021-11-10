@@ -29,7 +29,7 @@ var accounts = [
 //jike138.com juzi69.com必须付费
 // var hosts = ["koozk.com","juzi69.com", "hxrtnt.com", "jike138.com"]
 // var hosts = ["koozk.com", "hxrtnt.com"]
-var hosts = ["hxrtnt.com"]
+var hosts = ["hxrini.icu"]
 
 !(async () => {
     for (let i = 0; i < accounts.length; i++) {
