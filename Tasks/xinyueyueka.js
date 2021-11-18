@@ -29,32 +29,34 @@ const $ = new Env("心悦俱乐部月卡领取");
         $.done()
     });
 
+var Cookie2 = "access_token=1FDFC470DEBF76477789793CFC4D9934; acctype=qc; ams_qqopenid_101484782=7720CF4D27C3814FFAEC4C7292347609%7C992282588%7C33e12d720ff722ab7f08e0e5210219de; appid=101484782; ieg_ams_session_token=; ieg_ams_token=; ieg_ams_token_time=; openid=7720CF4D27C3814FFAEC4C7292347609; refresh_token=; pgv_info=ssid=s1400322075; pgv_pvid=1211201646; tokenParams=%3FADTAG%3Dad_app.gf.chanchu; xinyueqqcomrouteLine=a20171031lclk_a20180912tgclubcat_a20171031lclk; xyapp_login_type=qc; _qz_referrer=qzs.qq.com; eas_sid=X1P6S3m762q2k3h9q7I1i1t1F3"
 async function chekin() {
     await $.http.post({
-        url: "https://act.game.qq.com/ams/ame/amesvr?ameVersion=0.3&sServiceType=tgclub&iActivityId=141920&sServiceDepartment=xinyue&sSDID=ceb8ee081f8c6aa533d70b8887367d03&sMiloTag=AMS-MILO-141920-497774-7720CF4D27C3814FFAEC4C7292347609-1627960624461-JfaCDC&_=1627960624461",
+        url: "https://act.game.qq.com/ams/ame/amesvr?ameVersion=0.3&sServiceType=tgclub&iActivityId=141920&sServiceDepartment=xinyue&sSDID=ceb8ee081f8c6aa533d70b8887367d03&sMiloTag=AMS-MILO-141920-497774-7720CF4D27C3814FFAEC4C7292347609-1637225082509-25JLO0&_=1637225082509",
         headers: {
-            "Accept":"*/*",
-            "Origin":"https://xinyue.qq.com",
-            "Cookie":"access_token=1C98366958A03BDEBC893514169AAEAC; acctype=qc; appid=101484782; openid=7720CF4D27C3814FFAEC4C7292347609; refresh_token=; xyapp_login_type=qc; eas_sid=B176C2f7L9k559S6y6G0t5q7c7; pgv_info=ssid=s4121196540; pgv_pvid=1211201646; xinyueqqcomrouteLine=a20180912tgclubcat",
-            "Content-Type":"application/x-www-form-urlencoded",
-            "Host":"act.game.qq.com",
-            "Connection":"keep-alive",
-            "User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 tgclub/5.7.13 Scale/3.00",
-            "Referer":"https://xinyue.qq.com/act/a20180912tgclubcat/index.html",
-            "Accept-Language":"zh-cn"
+            "Host": "act.game.qq.com",
+            "Accept": "*/*",
+            "X-Proxyman-Repeated-ID": "B02F54B7",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Accept-Language": "zh-CN,zh-Hans;q=0.9",
+            "Origin": "https://xinyue.qq.com",
+            "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 tgclub/5.8.4.79(Scale/3.00 Channel/AppStore)",
+            "Connection": "close",
+            "Referer": "https://xinyue.qq.com/",
+            "Cookie": "access_token=1FDFC470DEBF76477789793CFC4D9934; acctype=qc; appid=101484782; openid=7720CF4D27C3814FFAEC4C7292347609; refresh_token=; xyapp_login_type=qc; pgv_info=ssid=s1400322075; pgv_pvid=1211201646; tokenParams=%3FADTAG%3Dad_app.gf.chanchu; xinyueqqcomrouteLine=a20171031lclk_a20180912tgclubcat_a20171031lclk_a20180912tgclubcat_a20180912tgclubcat; ieg_ams_session_token=; ieg_ams_token=; ieg_ams_token_time=; ams_qqopenid_101484782=7720CF4D27C3814FFAEC4C7292347609%7C992282588%7C33e12d720ff722ab7f08e0e5210219de; _qz_referrer=qzs.qq.com; eas_sid=X1P6S3m762q2k3h9q7I1i1t1F3"
         },
         body: {
-            "extraStr":"%2522mod1%2522%253A%25221%2522%252C%2522mod2%2522%253A%25220%2522%252C%2522mod3%2522%253A%2522x42%2522",
-            "iActivityId":"141920",
-            "iFlowId":"497774",
-            "g_tk":"1842395457",
-            "e_code":"0",
-            "g_code":"0",
-            "eas_url":"http://xinyue.qq.com/act/a20180912tgclubcat/",
-            "eas_refer":"http://noreferrer/?reqid=49a65ce4-4e26-4ae4-9295-d55fd54f2a47&version=24",
-            "sServiceDepartment":"xinyue",
-            "sServiceType":"tgclub",
-        }
+            "extraStr": "%252522mod1%252522%25253A%2525221%252522%25252C%252522mod2%252522%25253A%2525220%252522%25252C%252522mod3%252522%25253A%252522x42%252522",
+            "iActivityId": "141920",
+            "iFlowId": "497774",
+            "g_tk": "1842395457",
+            "e_code": "0",
+            "g_code": "0",
+            "eas_url": "http%3A%2F%2Fxinyue.qq.com%2Fact%2Fa20180912tgclubcat%2F",
+            "eas_refer": "http%3A%2F%2Fnoreferrer%2F%3Freqid%3D923de8f2-316c-410a-89d3-40ebbf55baff%26version%3D24",
+            "sServiceDepartment": "xinyue",
+            "sServiceType": "tgclub"
+      }
     }).then((res) => {
         var data = $.parse(res.body);
         if (data.ret == 0) {
@@ -71,7 +73,7 @@ async function yueka() {
         url: "https://comm.ams.game.qq.com/ams/ame/amesvr?ameVersion=0.3&sServiceType=tgclub&iActivityId=126962&sServiceDepartment=xinyue&sSDID=5986d5dd84ba8854aaa7b8c1f8be1b23&sMiloTag=AMS-MILO-126962-507443-7720CF4D27C3814FFAEC4C7292347609-1631501316930-BSikZh&_=1631501316931",
         headers: {
             "Host": "comm.ams.game.qq.com",
-            "Cookie": "access_token=1C98366958A03BDEBC893514169AAEAC; acctype=qc; appid=101484782; ieg_ams_session_token=; ieg_ams_token=; ieg_ams_token_time=; openid=7720CF4D27C3814FFAEC4C7292347609; refresh_token=; eas_sid=u1F6P3q1s550T1L2W6X423u9k8; pgv_pvid=1211201646; xyapp_login_type=qc; pgv_info=ssid=s7615486425; tokenParams=%3FADTAG%3Dad_app.gf.chanchu; xinyueqqcomrouteLine=a20180912tgclubcat_a20171031lclk",
+            "Cookie": Cookie2,
             "Accept": "*/*",
             "Content-Type": "application/x-www-form-urlencoded",
             "Origin": "https://xinyue.qq.com",
@@ -116,7 +118,7 @@ async function yueka() {
         url: "https://comm.ams.game.qq.com/ams/ame/amesvr?ameVersion=0.3&sServiceType=tgclub&iActivityId=126962&sServiceDepartment=xinyue&sSDID=5986d5dd84ba8854aaa7b8c1f8be1b23&sMiloTag=AMS-MILO-126962-507444-7720CF4D27C3814FFAEC4C7292347609-1631501536730-Qro3X6&_=1631501536730",
         headers: {
             "Host": "comm.ams.game.qq.com",
-            "Cookie": "access_token=1C98366958A03BDEBC893514169AAEAC; acctype=qc; appid=101484782; ieg_ams_session_token=; ieg_ams_token=; ieg_ams_token_time=; openid=7720CF4D27C3814FFAEC4C7292347609; refresh_token=; eas_sid=u1F6P3q1s550T1L2W6X423u9k8; pgv_pvid=1211201646; xyapp_login_type=qc; pgv_info=ssid=s7615486425; tokenParams=%3FADTAG%3Dad_app.gf.chanchu; xinyueqqcomrouteLine=a20180912tgclubcat_a20171031lclk",
+            "Cookie": Cookie2,
             "Accept": "*/*",
             "Content-Type": "application/x-www-form-urlencoded",
             "Origin": "https://xinyue.qq.com",
