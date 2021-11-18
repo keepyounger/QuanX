@@ -20,7 +20,7 @@ cron "30 23 * * *" script-path=tvideo.js,tag=腾讯视频
 
 const $ = new Env("腾讯视频");
 
-var _cookie = "video_platform=2; pgv_info=ssid=s5324169433; pgv_pvid=7324549985; uid=120299115; login_time_last=2021-10-8 23:4:24; main_login=qq; vqq_access_token=F3549FC3D29ADE55CF5AAEE9977F1648; vqq_appid=101483052; vqq_login_time_init=1633705464; vqq_next_refresh_time=6599; vqq_openid=34981A2F675AF936A40E35FD43112581; vqq_refresh_token=19FC3C8BED4A14C6CD4D94846F3655BE; vqq_vuserid=174859465; vqq_vusession=kAZHzNzborU9hTaEJGRbtA..; login_time_init=2021-10-8 23:4:23; RK=eeBofkFvEc; ptcz=72ef13629b419a3b4f8f88f352aa06dad38560ec9a42beb00269c950fda7f1b4; ptui_loginuin=992282588; tvfe_boss_uuid=4d4d2bc64482a3c2; video_guid=667ace36b2b99178"
+var _cookie = "pgv_pvid=8456411088; pac_uid=0_35ec3afa0dff1; RK=rXAoOmF/T8; ptcz=216b9e5fd6bd0f6cdbeb4c843a1b0c6a68f7644d908a571414465710a2c170c4; _ga=GA1.2.1640746519.1622449886; tvfe_boss_uuid=623a359793788bbb; video_guid=75e4dd5060adf8d4; video_platform=2; sd_userid=7091624877004830; sd_cookie_crttime=1624877004830; OUTFOX_SEARCH_USER_ID_NCOO=254054208.5993758; eas_sid=21C6b2B9B2x8m2G36636B138B6; pgv_info=ssid=s5599680304; main_login=qq; vqq_access_token=CEAA29C7038C66B7D3E3A0CE9581717F; vqq_appid=101483052; vqq_openid=34981A2F675AF936A40E35FD43112581; vqq_vuserid=174859465; vqq_vusession=jx36eZ7978rq5J0v9Dtzvg..; vqq_refresh_token=2B29C5829660344054287D4F2A76C9F8; vqq_next_refresh_time=6600; vqq_login_time_init=1637223616; login_time_init=2021-11-18 16:20:16"
 var headers = {}
 var headers2 = {}
 
@@ -135,7 +135,7 @@ async function otherSign(type) {
 
 async function login() {
     var cookie = null;
-    var url = "https://access.video.qq.com/user/auth_refresh?vappid=11059694&vsecret=fdf61a6be0aad57132bc5cdf78ac30145b6cd2c1470b0cfe&type=qq&g_tk=&g_vstk=2062439518&g_actk=1418836162&callback=jQuery191044250535211304076_1633705506013&_=1633705506014"
+    var url = "https://access.video.qq.com/user/auth_refresh?vappid=11059694&vsecret=fdf61a6be0aad57132bc5cdf78ac30145b6cd2c1470b0cfe&type=qq&g_tk=&g_vstk=1834945498&g_actk=1877842683&callback=jQuery19107624304897504095_1637223616527&_=1637223616528"
     await $.http.get({
         url: url,
         headers: headers
