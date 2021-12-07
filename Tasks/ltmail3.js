@@ -5,26 +5,26 @@ Last Modified time: 2021-9-26
 ============Quantumultx===============
 [task_local]
 #联通邮箱签到
-50 7 * * * ltmail.js, tag=联通邮箱签到, img-url=https://raw.githubusercontent.com/keepyounger/QuanX/main/Tasks/lt.png, enabled=true
+58 7 * * * ltmail.js, tag=联通邮箱签到, img-url=https://raw.githubusercontent.com/keepyounger/QuanX/main/Tasks/lt.png, enabled=true
 
 ================Loon==============
 [Script]
-cron "50 7 * * *" script-path=ltmail.js,tag=联通邮箱签到
+cron "58 7 * * *" script-path=ltmail.js,tag=联通邮箱签到
 
 ===============Surge=================
-联通邮箱签到 = type=cron,cronexp="50 7 * * *",wake-system=1,timeout=3600,script-path=ltmail.js
+联通邮箱签到 = type=cron,cronexp="58 7 * * *",wake-system=1,timeout=3600,script-path=ltmail.js
 
 ============小火箭=========
-联通邮箱签到 = type=cron,script-path=ltmail.js, cronexpr="50 7 * * *", timeout=3600, enable=true
+联通邮箱签到 = type=cron,script-path=ltmail.js, cronexpr="58 7 * * *", timeout=3600, enable=true
  */
 
-const $ = new Env("联通邮箱签到");
+const $ = new Env("联通邮箱签到3");
 
 var accounts = [
-    {phone: "18519117375", url: "https://nyan.mail.wo.cn/cn/sign/index/index?mobile=5w%2BQGZoP6xAwPvISpNzO2Q%3D%3D&userName=&openId=gaNAqo%2BybNFuba0NXG0MWvsrNuiolGhjqxTij3ORb4A%3D"}, 
-    {phone: "13240350760", url: "https://nyan.mail.wo.cn/cn/sign/index/index?mobile=weMpIcC8fQCbB%2BQOsPKs6Q%3D%3D&userName=&openId=8e1Ex6y3sBN2FiSGxTGJS47K8zN1bOu76XNaoNAWQ3k%3D"}, 
+    // {phone: "18519117375", url: "https://nyan.mail.wo.cn/cn/sign/index/index?mobile=5w%2BQGZoP6xAwPvISpNzO2Q%3D%3D&userName=&openId=gaNAqo%2BybNFuba0NXG0MWvsrNuiolGhjqxTij3ORb4A%3D"}, 
+    // {phone: "13240350760", url: "https://nyan.mail.wo.cn/cn/sign/index/index?mobile=weMpIcC8fQCbB%2BQOsPKs6Q%3D%3D&userName=&openId=8e1Ex6y3sBN2FiSGxTGJS47K8zN1bOu76XNaoNAWQ3k%3D"}, 
     {phone: "13283086073", url: "https://nyan.mail.wo.cn/cn/sign/index/index?mobile=ODxtWZXX4md3D6qxAOyvxQ%3D%3D&userName=&openId=7aRqE%2B5s%2F5QFdUIYCxoWPO7345NLc9dvYhoSAXdfsk8%3D"}, 
-    {phone: "15583378691", url: "https://nyan.mail.wo.cn/cn/sign/index/index?mobile=KhopAMqulyO5ewIqXbQt8w%3D%3D&userName=&openId=cDLLCi%2Fpd1X%2FPlojRDBS60acPScKSirXYqtrfoJtTZ8%3D"}, 
+    // {phone: "15583378691", url: "https://nyan.mail.wo.cn/cn/sign/index/index?mobile=KhopAMqulyO5ewIqXbQt8w%3D%3D&userName=&openId=cDLLCi%2Fpd1X%2FPlojRDBS60acPScKSirXYqtrfoJtTZ8%3D"}, 
 ]
 
 var headers = {

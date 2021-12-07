@@ -14,7 +14,16 @@
             "config":"10 8 * * * https:\/\/raw.githubusercontent.com\/keepyounger\/QuanX\/main\/Tasks\/vpnsign.js, img-url=https:\/\/raw.githubusercontent.com\/keepyounger\/QuanX\/main\/Tasks\/vpnsign.png, tag=VPN签到, enabled=true"
         },
         {
-            "config":"50 7 * * * https:\/\/raw.githubusercontent.com\/keepyounger\/QuanX\/main\/Tasks\/ltmail.js, img-url=https:\/\/raw.githubusercontent.com\/keepyounger\/QuanX\/main\/Tasks\/lt.png, tag=联通邮箱签到, enabled=true"
+            "config":"50 7 * * * https:\/\/raw.githubusercontent.com\/keepyounger\/QuanX\/main\/Tasks\/ltmail1.js, img-url=https:\/\/raw.githubusercontent.com\/keepyounger\/QuanX\/main\/Tasks\/lt.png, tag=联通邮箱签到1, enabled=true"
+        },
+        {
+            "config":"54 7 * * * https:\/\/raw.githubusercontent.com\/keepyounger\/QuanX\/main\/Tasks\/ltmail2.js, img-url=https:\/\/raw.githubusercontent.com\/keepyounger\/QuanX\/main\/Tasks\/lt.png, tag=联通邮箱签到2, enabled=true"
+        },
+        {
+            "config":"58 7 * * * https:\/\/raw.githubusercontent.com\/keepyounger\/QuanX\/main\/Tasks\/ltmail3.js, img-url=https:\/\/raw.githubusercontent.com\/keepyounger\/QuanX\/main\/Tasks\/lt.png, tag=联通邮箱签到3, enabled=true"
+        },
+        {
+            "config":"2 8 * * * https:\/\/raw.githubusercontent.com\/keepyounger\/QuanX\/main\/Tasks\/ltmail4.js, img-url=https:\/\/raw.githubusercontent.com\/keepyounger\/QuanX\/main\/Tasks\/lt.png, tag=联通邮箱签到4, enabled=true"
         },
         {
             "config":"30 23 * * * https:\/\/raw.githubusercontent.com\/keepyounger\/QuanX\/main\/Tasks\/tvideo.js, img-url=https:\/\/raw.githubusercontent.com\/keepyounger\/QuanX\/main\/Tasks\/tvideo.png, tag=腾讯视频, enabled=true"
