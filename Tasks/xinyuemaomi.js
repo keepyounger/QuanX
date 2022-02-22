@@ -19,7 +19,7 @@ cron "0 10,15,20 * * *" script-path=xinyuemaomi.js,tag=心悦猫咪
  */
 
 const $ = new Env("心悦猫咪");
-var Cookie = "access_token=1FDFC470DEBF76477789793CFC4D9934; acctype=qc; appid=101484782; openid=7720CF4D27C3814FFAEC4C7292347609; refresh_token=; ieg_ams_session_token=; ieg_ams_token=; ieg_ams_token_time=; pgv_pvid=1211201646; xyapp_login_type=qc; pgv_info=ssid=s1400322075; tokenParams=%3FADTAG%3Dad_app.gf.chanchu; xinyueqqcomrouteLine=a20171031lclk_a20180912tgclubcat_a20171031lclk_a20180912tgclubcat; ams_qqopenid_101484782=7720CF4D27C3814FFAEC4C7292347609%7C992282588%7C33e12d720ff722ab7f08e0e5210219de; _qz_referrer=qzs.qq.com; eas_sid=X1P6S3m762q2k3h9q7I1i1t1F3"
+var Cookie = "access_token=07C5B5D2B2308065FEFFE002CB67CD27; acctype=qc; appid=101484782; openid=7720CF4D27C3814FFAEC4C7292347609; refresh_token=; ams_qqopenid_101484782=7720CF4D27C3814FFAEC4C7292347609%7C992282588%7C33e12d720ff722ab7f08e0e5210219de; xyapp_login_type=qc; app_device_id=XYNO-E741E3C74CC040905D87CF03F4C23DA2; app_sessionid_app=d5c9c5926192147e1244fee590d26def; app_via=open; eas_sid=y1T614r545g054X603T6X4h0Y1; pgv_info=ssid=s6043324885; pgv_pvid=1211201646; xinyueqqcomrouteLine=a20180912tgclubcat"
 //超时函数
 function timeout(t) {
     var time = t;

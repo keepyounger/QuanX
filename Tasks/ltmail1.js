@@ -208,7 +208,7 @@ async function checkin() {
         } else if (num == -2) {
             $.msg("重复签到");
         } else {
-            $.msg(m.result);
+            $.msg(data.result);
         }
     });
 }
@@ -257,7 +257,7 @@ async function checkInTasks(task) {
         } else if (num == -1) {
             $.msg(task + "重复任务");
         } else {
-            $.msg(task + m.result);
+            $.msg(task + data.result);
         }
     });
 }
