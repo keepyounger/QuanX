@@ -1,3 +1,3 @@
 var body = $response.body;
-body = body.replace(/"vip_end_date":\d+/g,"\"vip_end_date\":111111110");
+body = body.replace(":0",":10000000000");
 $done({body:body});
