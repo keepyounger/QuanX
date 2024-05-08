@@ -1,13 +1,13 @@
-var body = $response.body;
-body = {
+var modifiedStatus = 'HTTP/1.1 200 OK';
+var body = {
     "msg" : "ok",
     "data" : {
-        "trial_status" : 0,
-        "alias" : "lixy的MacBook Pro",
+        "trial_status" : 1,
+        "alias" : "MacBook Pro",
         "device_id" : "aeawlzvg6eaabd4e",
-        "last_binded_at" : 0,
-        "trial_end_at" : 0
+        "last_binded_at" : 1710413039,
+        "trial_end_at" : 1742486399
     },
     "code" : 0
 }
-$done({body:body});
+$done({status: modifiedStatus, body: JSON.stringify(body)});
